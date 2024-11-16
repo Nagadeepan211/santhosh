@@ -102,6 +102,25 @@
             from { opacity: 0; }
             to { opacity: 1; }
         }
+
+        /* Styling for e-waste minimization section */
+        .ewaste {
+            margin-top: 30px;
+            background-color: #e0f7fa;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .ewaste img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .ewaste h3 {
+            color: #1e88e5;
+        }
     </style>
 </head>
 <body>
@@ -124,9 +143,9 @@
 
     <!-- Main Content -->
     <main class="fadeIn">
-        <section id="overview">
+        <section id="overview" class="tab-content">
             <h2>1. Overview</h2>
-            <p>Modern data storage solutions have evolved to meet the demands of growing data. From cloud-based storage to local solutions, understanding the options is critical for businesses and individuals alike. Below are the most popular types of data storage.</p>
+            <p>Modern data storage solutions have evolved to meet the demands of growing data. From cloud-based storage to local solutions, understanding the options is critical for businesses and individuals alike. Below are the most popular types of data storage:</p>
             <ul>
                 <li><strong>Relational Databases:</strong> Such as MySQL or PostgreSQL</li>
                 <li><strong>Document-Oriented Databases:</strong> Such as MongoDB or Firebase</li>
@@ -138,7 +157,7 @@
             </ul>
         </section>
 
-        <section id="security">
+        <section id="security" class="tab-content">
             <h2>2. Data Security and Privacy</h2>
             <button class="collapsible">Click to Expand Security Measures</button>
             <div class="content">
@@ -146,7 +165,7 @@
             </div>
         </section>
 
-        <section id="cost">
+        <section id="cost" class="tab-content">
             <h2>3. Cost Analysis</h2>
             <button class="collapsible">Click to Expand Cost Comparison</button>
             <div class="content">
@@ -154,7 +173,7 @@
             </div>
         </section>
 
-        <section id="integration">
+        <section id="integration" class="tab-content">
             <h2>4. Integration with Modern Technologies</h2>
             <button class="collapsible">Click to Expand Integration Details</button>
             <div class="content">
@@ -162,7 +181,7 @@
             </div>
         </section>
 
-        <section id="scalability">
+        <section id="scalability" class="tab-content">
             <h2>5. Scalability</h2>
             <button class="collapsible">Click to Expand Scalability Insights</button>
             <div class="content">
@@ -170,7 +189,7 @@
             </div>
         </section>
 
-        <section id="backup">
+        <section id="backup" class="tab-content">
             <h2>6. Backup and Disaster Recovery</h2>
             <button class="collapsible">Click to Expand Backup Solutions</button>
             <div class="content">
@@ -178,7 +197,7 @@
             </div>
         </section>
 
-        <section id="performance">
+        <section id="performance" class="tab-content">
             <h2>7. Performance Comparison</h2>
             <button class="collapsible">Click to Expand Performance Metrics</button>
             <div class="content">
@@ -186,22 +205,52 @@
             </div>
         </section>
 
-        <section id="future">
+        <section id="future" class="tab-content">
             <h2>8. Future Trends in Data Storage</h2>
             <button class="collapsible">Click to Expand Emerging Trends</button>
             <div class="content">
                 <p>The future of data storage includes the rise of quantum storage, edge computing, and decentralized blockchain storage, which are set to revolutionize data accessibility and security.</p>
             </div>
         </section>
+
+        <!-- E-Waste Minimization Section -->
+        <section class="ewaste">
+            <h3>Minimizing E-Waste with Modern Data Storage Solutions</h3>
+            <img src="https://www.example.com/eco-friendly-storage.jpg" alt="Eco-friendly Storage">
+            <p>Data storage solutions like cloud computing and virtual machines reduce the need for physical hardware, helping to minimize e-waste. By embracing more sustainable technologies, businesses and individuals can contribute to environmental preservation while maintaining efficient data storage solutions.</p>
+        </section>
     </main>
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2024 Modern Data Storage Solutions. All rights reserved.</p>
+        <p>&copy; 2024 Modern Data Storage Solutions | Proprietor: Santhosh | All rights reserved.</p>
     </footer>
 
-    <!-- JavaScript for Collapsible Sections -->
+    <!-- JavaScript for Tab Navigation and Collapsible Sections -->
     <script>
+        // Tab navigation functionality
+        const tabs = document.querySelectorAll('nav a');
+        const contents = document.querySelectorAll('.tab-content');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', (event) => {
+                event.preventDefault();
+                tabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                
+                contents.forEach(content => {
+                    content.style.display = 'none';
+                });
+                
+                const activeTabContent = document.querySelector(tab.getAttribute('href'));
+                activeTabContent.style.display = 'block';
+            });
+        });
+
+        // Display only the first active tab content by default
+        document.querySelector('.tab-content').style.display = 'block';
+
+        // Collapsible sections functionality
         var coll = document.getElementsByClassName("collapsible");
         for (var i = 0; i < coll.length; i++) {
             coll[i].addEventListener("click", function() {
